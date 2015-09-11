@@ -50,6 +50,7 @@ function isLoggedIn(req, res, next) {   // teste om bruker er logget inn
 }
 
 function additionalStep(req,res,next){
+    console.log('Executing additional step');
     return next();
 }
  
@@ -66,7 +67,7 @@ app.post("/login",
     function (req, res) {
         res.redirect("/content");
 });
-app.get("/content", isLoggedIn, addtionalStep, function (req, res) {
+app.get("/content", isLoggedIn, additionalStep, function (req, res) {
     res.send("Congratulations! you've successfully logged in.");
 });
 app.get("/logout", function (req, res) {
